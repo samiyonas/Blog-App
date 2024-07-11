@@ -1,32 +1,38 @@
 body {
-    background-color: #2E3436; /* Dark background similar to a Linux terminal */
-    color: #FFFFFF; /* White text color */
-    font-family: "DejaVu Sans Mono", monospace; /* Typical font for a terminal */
+    font-family: 'Courier New', Courier, monospace;
+    background-color: #000000;
+    color: #00ff00;
+    margin: 0;
+    padding: 0;
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
-    margin: 0;
 }
 
 .container {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100%;
+    flex-direction: column;
+    width: 100%;
+    max-width: 400px;
+    padding-left: 47px;
+    padding-right: 71px;
+    padding-bottom: 50px;
+    background-color: #2e2e2e;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
 }
 
 .signup-box {
-    background-color: #333A40; /* Slightly lighter background for the form */
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-    width: 300px;
+    width: 100%;
 }
 
-.signup-box h2 {
-    margin-bottom: 20px;
+h2 {
     text-align: center;
+    margin-bottom: 20px;
+    color: #00ff00;
 }
 
 .input-group {
@@ -36,29 +42,32 @@ body {
 .input-group label {
     display: block;
     margin-bottom: 5px;
+    color: #00ff00;
 }
 
 .input-group input {
     width: 100%;
-    padding: 8px;
-    border: 1px solid #555;
-    border-radius: 4px;
-    background-color: #2E3436;
-    color: #FFF;
-    box-sizing: border-box;
+    padding: 10px;
+    border: 1px solid #4e4e4e;
+    border-radius: 5px;
+    background-color: #3e3e3e;
+    color: #00ff00;
 }
 
-button {
+button[type="submit"] {
     width: 100%;
     padding: 10px;
     border: none;
-    border-radius: 4px;
-    background-color: #4E9A06; /* Green color inspired by Linux terminal */
-    color: #FFF;
-    font-size: 16px;
+    border-radius: 5px;
+    background-color: #5e5e5e;
+    color: #00ff00;
     cursor: pointer;
 }
 
-button:hover {
-    background-color: #73D216;
+button[type="submit"]:hover {
+    background-color: #7e7e7e;
+}
+
+span {
+    color: red;
 }

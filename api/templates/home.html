@@ -5,8 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home</title>
     <link rel="stylesheet" href="static/home.css">
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="static/jshome.js"></script>
 </head>
 <body>
     <header>
@@ -21,12 +19,19 @@
         </section>
         <aside class="login-form">
             <h2>Login</h2>
-            <form action="/login" method="post">
-                <label for="username">Username:</label>
-                <input type="text" id="username" name="username" required>
-                <label for="password">Password:</label>
-                <input type="password" id="password" name="password" required>
-                <button type="submit">Login</button>
+            <form action="/home/login" method="post">
+                {{ form.hidden_tag() }}
+                <div>
+                    {{ form.username.label }}
+                    {{ form.username(size=32) }}
+                </div>
+                <div>
+                    {{ form.password.label }}
+                    {{ form.password(size=32) }}
+                </div>
+                <div>
+                    {{ form.submit() }}
+                </div>
             </form>
             <div class="signup-link">
                 <p>Don't have an account? <a id="signup" href="/home/signup">Create Account?</a></p>
