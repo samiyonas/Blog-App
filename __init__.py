@@ -21,7 +21,6 @@ def create_app():
         """ wrapped in app_context so flask thinks the application was initialized"""
         from models.comments import Comment
         from models.posts import Post
-        from models.likes import Like
         from models.users import User
 
         db.init_app(app)

@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home</title>
     <link rel="stylesheet" href="static/home.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="static/home.js" defer></script>
 </head>
 <body>
     <header>
@@ -12,9 +14,13 @@
     </header>
     <main class="container">
         <section class="main-content">
-            {% for i in range(1, 10) %}
-                <h3>Blog {{ i }}</h3>
-                <p>This is your main content area. Customize it as needed.</p>
+            {% for i in random_posts %}
+            <div class="blog">
+                <h3 class="title">{{ i.title }}</h3>
+                <h4 class="subtitle">{{ i.subtitle }}</h4>
+                <p class="content">{{ i.content }}</p>
+                <hr>
+            </div>
             {% endfor %}
         </section>
         <aside class="login-form">

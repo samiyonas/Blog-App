@@ -14,4 +14,4 @@ class User(db.Model, BaseModel):
     password = db.Column(db.String(16), nullable=False)
     posts = db.relationship('Post', backref='user', cascade='all, delete')
     comments = db.relationship('Comment', backref='user', cascade='all, delete')
-    likes = db.relationship('Like', backref='user', cascade='all, delete')
+

@@ -14,4 +14,3 @@ class Post(db.Model, BaseModel):
     updated_at = db.Column(db.DateTime())
     user_id = db.Column(db.ForeignKey('user.id'))
     comments = db.relationship('Comment', backref='post', cascade='all, delete')
-    likes = db.relationship('Like', backref='post', cascade='all, delete')

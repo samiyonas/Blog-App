@@ -3,13 +3,12 @@
 from extend import db
 from models.comments import Comment
 from models.users import User
-from models.likes import Like
 from models.posts import Post
+
 
 classes = {
     "User": User,
     "Comment": Comment,
-    "Like": Like,
     "Post": Post
 }
 
@@ -28,9 +27,51 @@ class DBstorage:
     def create_obj(self, cls, kwargs):
         """ create database objects """
         cls = classes[cls]
-        new_user = cls(**kwargs)
+        new_obj = cls(**kwargs)
 
-        db.session.add(new_user)
+        db.session.add(new_obj)
         db.session.commit()
 
-        return new_user
+        return new_obj
+    
+    def login_credentials(self, username, password):
+        """ check login credentials """
+        user = User.query.filter_by(username=username).first()
+        if user and user.password == password:
+            return user
+        else:
+            return False
+    
+    def random_posts(self):
+        """ fetch random posts """
+        posts = []
+        all_posts = Post.query.all()
+        if len(all_posts) < 1:
+            return posts
+        for i in range(10):
+            if i < len(all_posts):
+                posts.append({
+                    "title": all_posts[i].title,
+                    "subtitle": all_posts[i].subtitle,
+                    "content": all_posts[i].content,
+                    "id": all_posts[i].id,
+                })
+            else:
+                break
+        return posts
+    
+    def delete_obj(self, cls, id):
+        """ delete an object """
+        user = cls.query.filter_by(id=id)
+
+        db.session.delete(user)
+        db.session.commit()
+
+    def update_user(self, data):
+        """ update a user """
+        user = User.query.filter_by(id=data.get('id')).first()
+        user.name = data.get('name')
+        user.username = data.get('username')
+
+        db.session.commit()
+    
