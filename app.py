@@ -4,7 +4,10 @@ from __init__ import create_app
 from api.home import hpage
 from api.client import client
 from os import getenv
+from dotenv import load_dotenv
 
+
+load_dotenv()
 
 app = create_app()
 
