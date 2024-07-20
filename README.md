@@ -19,17 +19,28 @@ The Blog App is a web application built using Flask and AJAX. It allows users to
 - **Form Handling**: Flask-WTF
 - **Session Management**: Flask sessions
 
-## Installation
+## Usage
 
-### Prerequisites
+- **Home Page**: Access the blog's home page, which displays recent posts and a login form.
+- **Sign Up**: Register a new account using the sign-up form.
+- **Log In**: Authenticate and access user-specific features.
+- **Create Post**: Use the provided form to create new blog posts.
+- **Comment**: Add comments to existing posts via AJAX.
+- **Logout**: Clear session and logout
 
-- Python 3.x
-- pip (Python package installer)
+## AJAX Endpoints
 
-### Setup
+- **POST /home/post**: Add a new blog post.
+- **POST /home/comment**: Add a comment to a blog post.
+- **GET /home/logout**: Log out and clear the session.
+- **GET /home/reading_page**: Retrieve and render a blog post page dynamically.
+- **PUT /home/update_user**: Updates user information
+- 
+## API Endpoints(CSRS)
 
-1. **Clone the Repository**
-
-   ```sh
-   git clone https://github.com/yourusername/your-repository.git
-   cd your-repository
+- **GET /api/client/number_of_users**: returns the total numbers of users
+- **GET /api/client/users**: returns all users
+- **GET /api/client/user/<id>**: returns specific user with the given ID
+- **GET /api/client/post/<id>**: returns specific post with the given ID
+- **GET /api/client/user_comment/id**: returns all comments made by specific user with the given ID
+- **GET /api/client/post_comment/id**: returns all comments under specific post with the given ID
