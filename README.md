@@ -36,7 +36,7 @@ The Blog App is a web application built using Flask and AJAX. It allows users to
 - **GET /home/reading_page**: Retrieve and render a blog post page dynamically.
 - **PUT /home/update_user**: Updates user information
 - 
-## API Endpoints(CSRS)
+## API Endpoints(CORS)
 
 - **GET /api/client/number_of_users**: returns the total numbers of users
 - **GET /api/client/users**: returns all users
