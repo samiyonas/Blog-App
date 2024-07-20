@@ -75,3 +75,74 @@ class DBstorage:
 
         db.session.commit()
     
+    def number_of_users(self):
+        """ get the total number of users of the blog """
+        user_count = User.query.count()
+
+        return user_count
+    
+    def get_all_users(self):
+        """ get all users of the blog """
+        user_list = []
+        users = User.query.all()
+        for i in users:
+            user = {
+                "id": i.id,
+                "name": i.name,
+                "username": i.username,
+                "email": i.email
+            }
+            user_list.append(user)
+        return user_list
+    
+    def get_user_id(self, user_id):
+        """ get a specific user """
+        user = User.query.filter_by(id=user_id).first()
+        if user:
+            user_dict = {
+                "name": user.name,
+                "username": user.username,
+                "email": user.email
+            }
+            return user_dict
+        return {"error": "user not found"}
+    
+    def get_post_id(self, post_id):
+        """ get a specific post """
+        post = Post.query.filter_by(id=post_id).first()
+        if post:
+            post_dict = {
+                "title": post.title,
+                "subtitle": post.subtitle,
+                "content": post.content
+            }
+            return post_dict
+        return {"error": "post not found"}
+    
+    def get_comment_user(self, user_id):
+        """ get all comments made by specific user """
+        all_comments = []
+        comments = Comment.query.filter_by(user_id=user_id).all()
+        if comments:
+            for i in comments:
+                comment = {
+                    "post_id": i.post_id,
+                    "content": i.content
+                }
+                all_comments.append(comment)
+            return all_comments
+        return {"error": "this user hasn't commented yet"}
+    
+    def get_comment_post(self, post_id):
+        """ get all comments under a specific post """
+        all_comments = []
+        comments = Comment.query.filter_by(post_id=post_id).all()
+        if comments:
+            for i in comments:
+                comment = {
+                    "user_id": i.user_id,
+                    "content": i.content
+                }
+                all_comments.append(comment)
+            return all_comments
+        return {"error": "no comments under this post"}

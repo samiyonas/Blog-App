@@ -90,6 +90,7 @@ $(document).on('click', "button#update-btn", function(event) {
         alert("You have to update both username and name!");
     }
 })
+
 $(document).on('click', 'button.submit-comment', function(event){
     event.preventDefault()
     
@@ -117,4 +118,17 @@ $(document).on('click', 'button.submit-comment', function(event){
             }
         })
     }
+})
+
+$(document).on('click', 'button#logout', function() {
+    $.ajax({
+        type: 'GET',
+        url: '/home/logout',
+        success: function(response) {
+            window.location.href = '/home';
+        },
+        error: function(response) {
+            alert("Something went wrong")
+        }
+    })
 })

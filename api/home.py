@@ -128,3 +128,8 @@ def comment():
             if storage.create_obj('Comment', data):
                 return jsonify({"message": "no error"})
         return jsonify({"message": "incorrect data"})
+
+@hpage.route("/logout", methods=['GET'], strict_slashes=False)
+def logout():
+    session.clear()
+    return redirect(url_for("hpage.home"))
