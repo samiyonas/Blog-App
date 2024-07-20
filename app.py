@@ -3,11 +3,12 @@
 from __init__ import create_app
 from api.home import hpage
 from api.client import client
+from os import getenv
 
 
 app = create_app()
 
-app.secret_key = "hellowbitches"
+app.secret_key = getenv('SECRET_KEY')
 
 app.register_blueprint(hpage)
 app.register_blueprint(client)
